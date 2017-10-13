@@ -33,11 +33,12 @@ namespace ResourceMonitor
 
             #endregion
 
-            TimeSpan upTimeSpan = TimeSpan.FromMinutes(perfUpTimeCount.NextValue());
-            string systemUpTimeMessage = String.Format("The current up time is {0} days {1} hours {2} minutes",
+            TimeSpan upTimeSpan = TimeSpan.FromSeconds(perfUpTimeCount.NextValue());
+            string systemUpTimeMessage = string.Format("The current up time is {0} days {1} hours {2} minutes {3} seconds",
                 (int)upTimeSpan.TotalDays,
                 (int)upTimeSpan.Hours,
-                (int)upTimeSpan.Minutes
+                (int)upTimeSpan.Minutes,
+                (int)upTimeSpan.Seconds
                 );
             synth.Speak(systemUpTimeMessage);
 
@@ -56,19 +57,19 @@ namespace ResourceMonitor
                 {
                     if (currentCpuPercentage == 100)
                     {
-                        string cpuLoadVocalMessage = String.Format("CAUTION! CPU is at {0} percent", currentCpuPercentage);
+                        string cpuLoadVocalMessage = string.Format("CAUTION! CPU is at {0} percent", currentCpuPercentage);
                         synth.Speak(cpuLoadVocalMessage);
                     }
                     else
                     {
-                        string cpuLoadVocalMessage = String.Format("The current CPU load is {0} percent", currentCpuPercentage);
+                        string cpuLoadVocalMessage = string.Format("The current CPU load is {0} percent", currentCpuPercentage);
                         synth.Speak(cpuLoadVocalMessage);
                     }
                 }
                 //for fun: if avail mem is <1GB
                 if (currentAvailMem < 1024)
                 {
-                    string memAvailableVocalMessage = String.Format("You currently have {0} megabytes of memory available", currentAvailMem);
+                    string memAvailableVocalMessage = string.Format("You currently have {0} megabytes of memory available", currentAvailMem);
                     synth.Speak(memAvailableVocalMessage);
                 }
 
