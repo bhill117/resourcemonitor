@@ -3,3 +3,4 @@ c:\users\brandon\documents\visual studio 2015\Projects\ResourceMonitor\ResourceM
 c:\users\brandon\documents\visual studio 2015\Projects\ResourceMonitor\ResourceMonitor\bin\Debug\ResourceMonitor.pdb
 c:\users\brandon\documents\visual studio 2015\Projects\ResourceMonitor\ResourceMonitor\obj\Debug\ResourceMonitor.exe
 c:\users\brandon\documents\visual studio 2015\Projects\ResourceMonitor\ResourceMonitor\obj\Debug\ResourceMonitor.pdb
+C:\Users\Brandon\Documents\Visual Studio 2015\Projects\ResourceMonitor\ResourceMonitor\obj\Debug\ResourceMonitor.csprojResolveAssemblyReference.cache

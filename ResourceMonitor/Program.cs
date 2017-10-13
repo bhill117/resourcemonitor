@@ -30,10 +30,11 @@ namespace ResourceMonitor
             //Running Time
             PerformanceCounter perfUpTimeCount = new PerformanceCounter("System", "System Up Time");
             perfUpTimeCount.NextValue();
+
             #endregion
 
             TimeSpan upTimeSpan = TimeSpan.FromMinutes(perfUpTimeCount.NextValue());
-            string systemUpTimeMessage = string.Format("The current up time is {0} days {1} hours {2} minutes",
+            string systemUpTimeMessage = String.Format("The current up time is {0} days {1} hours {2} minutes",
                 (int)upTimeSpan.TotalDays,
                 (int)upTimeSpan.Hours,
                 (int)upTimeSpan.Minutes
@@ -46,11 +47,32 @@ namespace ResourceMonitor
                 int currentCpuPercentage = (int)perfCpuCount.NextValue();
                 int currentAvailMem = (int)perfMemCount.NextValue();
 
-                // Displays CPU and RAM ussage every 5000ms (5sec)
+                // Displays CPU and RAM ussage every 3000ms (3sec)
                 Console.WriteLine("CPU Usage:   {0}%", currentCpuPercentage);
                 Console.WriteLine("RAM Avail:   {0}MB", currentAvailMem);
 
-                Thread.Sleep(5000);
+                //for fun: if CPU rises above 90%
+                if (currentCpuPercentage > 90)
+                {
+                    if (currentCpuPercentage == 100)
+                    {
+                        string cpuLoadVocalMessage = String.Format("CAUTION! CPU is at {0} percent", currentCpuPercentage);
+                        synth.Speak(cpuLoadVocalMessage);
+                    }
+                    else
+                    {
+                        string cpuLoadVocalMessage = String.Format("The current CPU load is {0} percent", currentCpuPercentage);
+                        synth.Speak(cpuLoadVocalMessage);
+                    }
+                }
+                //for fun: if avail mem is <1GB
+                if (currentAvailMem < 1024)
+                {
+                    string memAvailableVocalMessage = String.Format("You currently have {0} megabytes of memory available", currentAvailMem);
+                    synth.Speak(memAvailableVocalMessage);
+                }
+
+                Thread.Sleep(3000);
             }
 
             #endregion
