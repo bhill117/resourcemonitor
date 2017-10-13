@@ -24,7 +24,7 @@ namespace ResourceMonitor
             perfCpuCount.NextValue();
 
             //Memory Usage
-            PerformanceCounter perfMemCount = new PerformanceCounter("Memory", "Available MB");
+            PerformanceCounter perfMemCount = new PerformanceCounter("Memory", "Available MBytes");
             perfMemCount.NextValue();
 
             //Running Time
@@ -32,7 +32,7 @@ namespace ResourceMonitor
             perfUpTimeCount.NextValue();
             #endregion
 
-            TimeSpan upTimeSpan = TimeSpan.FromSeconds(perfUpTimeCount.NextValue());
+            TimeSpan upTimeSpan = TimeSpan.FromMinutes(perfUpTimeCount.NextValue());
             string systemUpTimeMessage = string.Format("The current up time is {0} days {1} hours {2} minutes",
                 (int)upTimeSpan.TotalDays,
                 (int)upTimeSpan.Hours,
@@ -50,7 +50,7 @@ namespace ResourceMonitor
                 Console.WriteLine("CPU Usage:   {0}%", currentCpuPercentage);
                 Console.WriteLine("RAM Avail:   {0}MB", currentAvailMem);
 
-
+                Thread.Sleep(5000);
             }
 
             #endregion
