@@ -32,6 +32,13 @@ namespace ResourceMonitor
             perfUpTimeCount.NextValue();
             #endregion
 
+            TimeSpan upTimeSpan = TimeSpan.FromSeconds(perfUpTimeCount.NextValue());
+            string systemUpTimeMessage = string.Format("The current up time is {0} days {1} hours {2} minutes",
+                (int)upTimeSpan.TotalDays,
+                (int)upTimeSpan.Hours,
+                (int)upTimeSpan.Minutes
+                );
+            synth.Speak(systemUpTimeMessage);
 
 
         }
