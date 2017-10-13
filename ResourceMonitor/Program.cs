@@ -40,6 +40,20 @@ namespace ResourceMonitor
                 );
             synth.Speak(systemUpTimeMessage);
 
+            #region terminal display
+            while (true)
+            {
+                int currentCpuPercentage = (int)perfCpuCount.NextValue();
+                int currentAvailMem = (int)perfMemCount.NextValue();
+
+                // Displays CPU and RAM ussage every 5000ms (5sec)
+                Console.WriteLine("CPU Usage:   {0}%", currentCpuPercentage);
+                Console.WriteLine("RAM Avail:   {0}MB", currentAvailMem);
+
+
+            }
+
+            #endregion
 
         }
     }
