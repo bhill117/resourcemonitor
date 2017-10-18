@@ -11,7 +11,8 @@ namespace ResourceMonitor
         {
             //Greeting
             SpeechSynthesizer synth = new SpeechSynthesizer();
-            synth.Speak("Welcome to Resource Monitor");
+            synth.SelectVoice("Microsoft Eva Mobile");
+            synth.Speak("Hey there Chief. Welcome to Resource Monitor");
 
             #region Performance Counters
 
@@ -53,19 +54,19 @@ namespace ResourceMonitor
                 {
                     if (currentCpuPercentage == 100)
                     {
-                        string cpuLoadVocalMessage = string.Format("CAUTION! CPU is at {0} percent", currentCpuPercentage);
+                        string cpuLoadVocalMessage = string.Format("Whoa Chief. CPU is at {0} percent", currentCpuPercentage);
                         synth.Speak(cpuLoadVocalMessage);
                     }
                     else
                     {
-                        string cpuLoadVocalMessage = string.Format("The current CPU load is {0} percent", currentCpuPercentage);
+                        string cpuLoadVocalMessage = string.Format("Chief. The current CPU load is {0} percent", currentCpuPercentage);
                         synth.Speak(cpuLoadVocalMessage);
                     }
                 }
                 //for fun: if avail mem is <1GB
                 if (currentAvailMem < 1024)
                 {
-                    string memAvailableVocalMessage = string.Format("You currently have {0} megabytes of memory available", currentAvailMem);
+                    string memAvailableVocalMessage = string.Format("You currently have {0} megabytes of memory available Chief", currentAvailMem);
                     synth.Speak(memAvailableVocalMessage);
                 }
 
